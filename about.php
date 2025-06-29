@@ -12,8 +12,16 @@
         </header>
 
     <section class="page-section">
-        <div class="container">
-    <?php echo html_entity_decode($_SESSION['setting_about_content']) ?>        
-            
+        <div class="container about-content" style="max-width: 1000px;">
+            <?php echo html_entity_decode($_SESSION['setting_about_content']) ?>        
         </div>
-        </section>
+    </section>
+
+<style>
+.about-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: pre-line;
+}
+</style>

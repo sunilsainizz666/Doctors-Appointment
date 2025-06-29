@@ -28,6 +28,28 @@
 			height: 250px; /* Adjust height for mobile */
 		}
 	}
+    /* Add margin to navbar icons */
+    .navbar-nav .nav-link .fa {
+        margin-left: 8px;
+    }
+
+    /* Highlight Contact Us section */
+    footer.bg-light {
+        background: linear-gradient(rgba(40,40,60,0.85), rgba(40,40,60,0.85)), url('assets/img/medical-appointment-cover.jpg') center/cover no-repeat;
+        color: #fff !important;
+        position: relative;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    footer.bg-light h2,
+    footer.bg-light .divider,
+    footer.bg-light a,
+    footer.bg-light .fa {
+        color: #fff !important;
+    }
+    footer.bg-light .divider {
+        border-color: #fff;
+    }
 </style>
     <body id="page-top">
         <!-- Navigation-->
@@ -41,14 +63,16 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=doctors"></span>Doctors</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=doctors"><i class="fa fa-user-md"></i> Doctors</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about"><i class="fa fa-info-circle"></i> About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=search"><i class="fa fa-search"></i> Search</a></li>
                         <?php if(isset($_SESSION['login_id'])): ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin/ajax.php?action=logout2"><?php echo "Welcome ".$_SESSION['login_name'] ?> <i class="fa fa-power-off"></i></a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=user_profile"><i class="fa fa-user"></i> <?php echo "Welcome ".$_SESSION['login_name'] ?></a></li>
                       <?php else: ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:void(0)" id="login_now">Login</a></li>
-                      <?php endif; ?>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:void(0)" id="login_now"><i class="fa fa-sign-in-alt"></i> Login</a></li>
+                        <?php endif; ?>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin/login.php"><i class="fa fa-user-shield"></i> Admin Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -132,6 +156,15 @@
        <?php include('footer.php') ?>
     </body>
 
-    <?php $conn->close() ?>
+    <?php
+    if (isset($conn) && $conn instanceof mysqli) {
+        // Try to close only if not already closed
+        try {
+            @$conn->close();
+        } catch (Throwable $e) {
+            // Ignore if already closed
+        }
+    }
+    ?>
 
 </html>
