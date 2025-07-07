@@ -1,4 +1,3 @@
-
 <?php 
 	include 'db_connect.php';
 	$doctor= $conn->query("SELECT * FROM doctors_list ");
@@ -16,6 +15,7 @@
 			<div class="card-body">
 				<button class="btn-primary btn btn-sm" type="button" id="new_appointment"><i class="fa fa-plus"></i> New Appointment</button>
 				<br>
+				<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -58,6 +58,7 @@
 					</tr>
 				<?php endwhile; ?>
 				</table>
+				</div>
 			</div>
 		</div>
 	</div>

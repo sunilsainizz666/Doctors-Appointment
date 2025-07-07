@@ -21,6 +21,7 @@ while($row=$qry->fetch_assoc()){
 	<div class="col-lg-12">
 		<div class="row">
 			<div class="col-md-12">
+			<div class="table-responsive">
 			<table class="table">
 				<thead>
 					<tr>
@@ -44,6 +45,7 @@ while($row=$qry->fetch_assoc()){
 					<?php endfor; ?>
 				</tbody>
 			</table>
+			</div>
 			</div>
 		</div>
 	<hr>

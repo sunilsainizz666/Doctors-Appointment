@@ -10,6 +10,7 @@
 <div class="container-fluid">
 	<div class="col-lg-12">
 		<div class="row">
+			<div class="table-responsive">
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -26,6 +27,7 @@
 					<?php endwhile; ?>
 				</tbody>
 			</table>
+			</div>
 		</div>
 	<hr>
 		<div class="row">

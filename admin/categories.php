@@ -44,6 +44,7 @@
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-body">
+						<div class="table-responsive">
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
@@ -62,7 +63,7 @@
 								<tr>
 									<td class="text-center"><?php echo $i++ ?></td>
 									<td class="text-center">
-										<img src="../assets/img/<?php echo $row['img_path'] ?>" alt="">
+										<img src="../assets/img/<?php echo $row['img_path'] ?>" alt="" class="img-fluid">
 									</td>
 									<td class="">
 										 <b><?php echo $row['name'] ?></b>
@@ -75,6 +76,7 @@
 								<?php endwhile; ?>
 							</tbody>
 						</table>
+						</div>
 					</div>
 				</div>
 			</div>

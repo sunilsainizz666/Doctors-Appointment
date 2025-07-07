@@ -1,7 +1,10 @@
-
 <style>
 </style>
-<nav id="sidebar" class='mx-lt-5 bg-dark' >
+<!-- Responsive Sidebar Toggle Button -->
+<button class="btn btn-primary d-md-none m-2" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+  <i class="fa fa-bars"></i>
+</button>
+<nav id="sidebar" class='mx-lt-5 bg-dark collapse d-md-block' >
 		
 		<div class="sidebar-list">
 

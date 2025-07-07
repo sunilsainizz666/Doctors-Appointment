@@ -28,6 +28,88 @@
 			height: 250px; /* Adjust height for mobile */
 		}
 	}
+    /* Navbar Enhancements */
+    .navbar {
+        background: rgba(255,255,255,0.95) !important;
+        box-shadow: 0 2px 12px rgba(40,40,60,0.08);
+        border-radius: 0 0 18px 18px;
+        transition: background 0.3s, box-shadow 0.3s;
+    }
+    .navbar .navbar-brand img {
+        height: 48px;
+        width: auto;
+        margin-right: 12px;
+        vertical-align: middle;
+    }
+    .navbar-nav .nav-link {
+        font-weight: 500;
+        font-size: 1.08rem;
+        color: #283046 !important;
+        margin: 0 8px;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
+        display: flex;
+        align-items: center;
+        padding: 8px 14px;
+    }
+    .navbar-nav .nav-link .fa {
+        margin-left: 8px;
+        font-size: 1.1em;
+    }
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        background: #e3e8f0;
+        color: #007bff !important;
+        text-decoration: none;
+    }
+    .navbar-toggler {
+        border: none;
+        outline: none;
+        box-shadow: none !important;
+        background: #e3e8f0;
+        border-radius: 8px;
+        padding: 6px 10px;
+        transition: background 0.2s;
+    }
+    .navbar-toggler:focus, .navbar-toggler:hover {
+        background: #d1d8e6;
+    }
+    @media (max-width: 991.98px) {
+        .navbar-nav {
+            background: rgba(255,255,255,0.98);
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 4px 16px rgba(40,40,60,0.10);
+            padding: 12px 0;
+        }
+        .navbar-nav .nav-item {
+            margin-bottom: 8px;
+        }
+    }
+    /* Logo alignment */
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: #283046 !important;
+        letter-spacing: 1px;
+    }
+    /* Highlight Contact Us section */
+    footer.bg-light {
+        background: linear-gradient(rgba(40,40,60,0.85), rgba(40,40,60,0.85)), url('assets/img/medical-appointment-cover.jpg') center/cover no-repeat;
+        color: #fff !important;
+        position: relative;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    footer.bg-light h2,
+    footer.bg-light .divider,
+    footer.bg-light a,
+    footer.bg-light .fa {
+        color: #fff !important;
+    }
+    footer.bg-light .divider {
+        border-color: #fff;
+    }
 </style>
     <body id="page-top">
         <!-- Navigation-->
@@ -37,18 +119,21 @@
       </div>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container">
-              <img src="assets\img\logo.svg" alt="logo ">
+              <a class="navbar-brand" href="index.php">
+                <img src="assets/img/logo.svg" alt="logo">
+              </a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=doctors"></span>Doctors</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=home"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=doctors"><i class="fa fa-user-md"></i> Doctors</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about"><i class="fa fa-info-circle"></i> About</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=search"><i class="fa fa-search"></i> Search</a></li>-->
                         <?php if(isset($_SESSION['login_id'])): ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="admin/ajax.php?action=logout2"><?php echo "Welcome ".$_SESSION['login_name'] ?> <i class="fa fa-power-off"></i></a></li>
-                      <?php else: ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:void(0)" id="login_now">Login</a></li>
-                      <?php endif; ?>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=user_profile"><i class="fa fa-user"></i> <?php echo "Welcome ".$_SESSION['login_name'] ?></a></li>
+                        <?php else: ?>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="javascript:void(0)" id="login_now"><i class="fa fa-sign-in-alt"></i> Login</a></li>
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
@@ -132,6 +217,15 @@
        <?php include('footer.php') ?>
     </body>
 
-    <?php $conn->close() ?>
+    <?php
+    if (isset($conn) && $conn instanceof mysqli) {
+        // Try to close only if not already closed
+        try {
+            @$conn->close();
+        } catch (Throwable $e) {
+            // Ignore if already closed
+        }
+    }
+    ?>
 
 </html>

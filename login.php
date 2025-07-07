@@ -19,7 +19,6 @@
 		display:none;
 	}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
 	$('#new_account').click(function(){

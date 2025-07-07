@@ -13,6 +13,7 @@
 	<div class="row">
 		<div class="card col-lg-12">
 			<div class="card-body">
+				<div class="table-responsive">
 				<table class="table-striped table-bordered col-md-12">
 			<thead>
 				<tr>
@@ -58,6 +59,7 @@
 				<?php endwhile; ?>
 			</tbody>
 		</table>
+				</div>
 			</div>
 		</div>
 	</div>
